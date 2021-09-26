@@ -14,7 +14,7 @@ This repository contains code which demonstrates Dev-Sec-Ops using a `FastAPI` a
 
 ## CI/CD
 
-- `unittest`: Run the python unit tests using pytest
+- `unittest`: Run the python unit tests using pytest.
 - `codecoverage`: Analyze code quality using codecov and upload results
 - `container-security`: Scan docker image using anchore and upload SARIF report artifact
 - `upload_zip`: Package code and upload as artifact
