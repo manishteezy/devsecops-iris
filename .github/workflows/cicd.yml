@@ -23,10 +23,11 @@ jobs:
           pytest
 
   codecoverage:
-    runs-on: ubuntu-latest # choose the OS for running the action
+    runs-on: ${{ matrix.OS }} # choose the OS for running the action
     strategy:
-      matrix: 
-        python: ['3.7', '3.8', '3.9']
+      matrix:
+        OS: ["ubuntu-latest", "windows-latest"]
+        python: ["3.7", "3.8", "3.9"]
     env:
       PYTHON: ${{ matrix.python }}
     # define the individual sequential steps to be run
@@ -74,14 +75,14 @@ jobs:
         with:
           name: SARIF report
           path: ./results.sarif
-  
+
   upload_zip:
     runs-on: ubuntu-latest # choose the OS for running the action
-    needs: 
+    needs:
       - unittest
       - codecoverage
       - container-security
-    
+
     # define the individual sequential steps to be run
     steps:
       - name: Checkout the repository
